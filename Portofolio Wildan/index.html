@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wildan Syah Putra, S.P.W.K - Professional Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- THEME SYSTEM (DARK & LIGHT MODE) --- */
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #1e293b;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.25);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --nav-bg: rgba(11, 15, 25, 0.85);
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        .light-mode {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --accent: #0284c7;
+            --accent-glow: rgba(2, 132, 199, 0.15);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --nav-bg: rgba(248, 250, 252, 0.9);
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.8; overflow-x: hidden; }
+
+        /* Navbar */
+        header { position: fixed; top: 0; width: 100%; background: var(--nav-bg); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; }
+        .logo { font-weight: 700; font-size: 1.15rem; color: var(--text-main); letter-spacing: 0.5px; }
+        .logo span { color: var(--accent); }
+        .nav-right { display: flex; align-items: center; gap: 2.5rem; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 0.95rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Theme Toggle Button */
+        .theme-toggle { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--accent); width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; box-shadow: var(--shadow); }
+        .theme-toggle:hover { transform: scale(1.1); border-color: var(--accent); }
+
+        /* Hero Section */
+        .hero { padding: 11rem 2rem 5rem; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 3.5rem; align-items: center; }
+        
+        /* Track Switcher */
+        .track-switcher { display: inline-flex; background: var(--card-bg); padding: 6px; border-radius: 14px; border: 1px solid var(--border-color); gap: 6px; margin-bottom: 1.5rem; box-shadow: var(--shadow); }
+        .track-btn { background: transparent; border: none; color: var(--text-muted); padding: 0.65rem 1.25rem; border-radius: 10px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.3s; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .track-btn.active { background: var(--accent); color: #ffffff; box-shadow: 0 4px 15px var(--accent-glow); }
+
+        .hero h1 { font-size: 3.2rem; font-weight: 700; margin-bottom: 1.2rem; line-height: 1.2; letter-spacing: -0.02em; }
+        .hero h1 span { color: var(--accent); background: linear-gradient(135deg, var(--accent), #10b981); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2.5rem; line-height: 1.8; }
+        .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+        
+        .btn { display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; padding: 0.8rem 1.6rem; border-radius: 12px; font-weight: 600; font-size: 0.95rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border: none; }
+        .btn-primary { background: var(--accent); color: #ffffff; box-shadow: 0 4px 20px var(--accent-glow); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px var(--accent-glow); filter: brightness(1.1); }
+        .btn-outline { border: 1px solid var(--border-color); color: var(--text-main); background: var(--card-bg); }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
+
+        /* Hero Profile Card Style */
+        .hero-profile-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 24px; padding: 2.5rem; text-align: center; position: relative; box-shadow: var(--shadow); transition: transform 0.4s ease, border-color 0.3s ease; }
+        .hero-profile-card:hover { transform: translateY(-8px); border-color: var(--accent); }
+        .profile-img-container { width: 140px; height: 140px; margin: 0 auto 1.2rem; border-radius: 50%; overflow: hidden; border: 3px solid var(--accent); box-shadow: 0 0 30px var(--accent-glow); transition: 0.4s; }
+        .hero-profile-card:hover .profile-img-container { transform: scale(1.05); }
+        .profile-img-container img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-profile-card h3 { font-size: 1.3rem; margin-bottom: 0.4rem; font-weight: 700; }
+        .hero-profile-card .role-sub { font-size: 0.88rem; color: var(--accent); font-weight: 600; line-height: 1.5; }
+
+        /* Main Container */
+        .container { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
+        section { margin-bottom: 6rem; }
+        .section-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 2rem; display: flex; align-items: center; gap: 0.85rem; letter-spacing: -0.01em; }
+        .section-title i { color: var(--accent); font-size: 1.6rem; }
+
+        /* Cards & Grids */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+        .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 24px; padding: 2.5rem; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 25px 40px -12px var(--accent-glow); }
+        .card h3 { font-size: 1.35rem; margin-bottom: 0.4rem; font-weight: 700; }
+        .card .subtitle { color: var(--accent); font-weight: 600; font-size: 0.92rem; margin-bottom: 0.8rem; }
+        .card p, .card ul li { color: var(--text-muted); font-size: 0.96rem; line-height: 1.8; }
+
+        /* Category Filter Tabs */
+        .filter-buttons { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .filter-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-muted); padding: 0.8rem 1.6rem; border-radius: 12px; font-weight: 600; cursor: pointer; transition: 0.3s; display: inline-flex; align-items: center; gap: 0.6rem; box-shadow: var(--shadow); }
+        .filter-btn.active, .filter-btn:hover { background: var(--accent); color: #ffffff; border-color: var(--accent); box-shadow: 0 6px 20px var(--accent-glow); }
+
+        /* Projects & Gallery Section */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem; }
+        .project-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 24px; overflow: hidden; display: none; flex-direction: column; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow); }
+        .project-card.show { display: flex; animation: fadeIn 0.5s ease; }
+        .project-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 25px 50px -15px var(--accent-glow); }
+        
+        /* Auto Slideshow Container Styling */
+        .project-img-container { width: 100%; height: 240px; background: #0f172a; overflow: hidden; position: relative; border-bottom: 1px solid var(--border-color); cursor: pointer; }
+        .slide-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .slide-img.active { opacity: 1; }
+        .project-card:hover .slide-img.active { transform: scale(1.08); filter: brightness(1.08); }
+        
+        .project-img-container::after { content: '\f002'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; inset: 0; background: rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8rem; opacity: 0; transition: 0.3s; backdrop-filter: blur(3px); z-index: 5; pointer-events: none; }
+        .project-img-container:hover::after { opacity: 1; }
+        
+        .project-content { padding: 2.2rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .project-content h3 { font-size: 1.3rem; margin-bottom: 0.75rem; font-weight: 700; color: var(--text-main); }
+        .project-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; line-height: 1.7; }
+        
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
+        .tech-tag { background: var(--accent-glow); color: var(--accent); padding: 0.35rem 0.9rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; border: 1px solid var(--border-color); }
+
+        /* Detailed Modal Styles */
+        .modal { display: none; position: fixed; z-index: 2000; inset: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px); justify-content: center; align-items: center; padding: 2rem; overflow-y: auto; }
+        .modal-content { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 24px; width: 100%; max-width: 950px; max-height: 90vh; overflow-y: auto; padding: 3rem; position: relative; box-shadow: 0 25px 60px rgba(0,0,0,0.5); }
+        .modal-close { position: absolute; top: 25px; right: 30px; color: var(--text-main); font-size: 2.2rem; cursor: pointer; transition: 0.3s; z-index: 10; }
+        .modal-close:hover { color: var(--accent); }
+        
+        .case-study-box { background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.8rem; margin: 1.5rem 0; box-shadow: var(--shadow); }
+        .case-study-box h4 { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.6rem; font-weight: 700; }
+        .case-study-box ul { padding-left: 1.3rem; color: var(--text-muted); font-size: 0.95rem; }
+        .case-study-box ul li { margin-bottom: 0.5rem; line-height: 1.7; }
+        .case-study-box p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 0.6rem; }
+
+        .modal-headline-img { width: 100%; height: 380px; object-fit: cover; border-radius: 16px; border: 1px solid var(--border-color); margin: 1.5rem 0; cursor: pointer; transition: 0.3s; }
+        .modal-headline-img:hover { filter: brightness(1.05); }
+
+        .modal-params-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.8rem; margin-top: 1.8rem; }
+        .modal-param-card { background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.4rem; text-align: center; box-shadow: var(--shadow); }
+        .modal-param-card img { width: 100%; height: 140px; object-fit: cover; border-radius: 10px; margin-bottom: 0.85rem; cursor: pointer; transition: 0.3s; }
+        .modal-param-card img:hover { transform: scale(1.04); filter: brightness(1.05); }
+        .modal-param-card h5 { font-size: 1rem; color: var(--text-main); margin-bottom: 0.4rem; font-weight: 700; }
+        .modal-param-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+        /* Lightbox Gallery Modal */
+        .lightbox-modal { display: none; position: fixed; z-index: 3000; inset: 0; background: rgba(0, 0, 0, 0.94); backdrop-filter: blur(15px); justify-content: center; align-items: center; flex-direction: column; padding: 2rem; }
+        .lightbox-container { position: relative; max-width: 950px; width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .lightbox-container img { max-width: 100%; max-height: 72vh; object-fit: contain; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 20px 50px rgba(0,0,0,0.7); user-select: none; }
+        .lightbox-caption { margin-top: 1.5rem; color: #ffffff; font-size: 1.1rem; font-weight: 600; background: rgba(30, 41, 59, 0.9); padding: 0.75rem 1.8rem; border-radius: 30px; border: 1px solid var(--border-color); box-shadow: var(--shadow); }
+        .lightbox-counter { position: absolute; top: 15px; left: 20px; color: var(--accent); font-weight: 600; font-size: 0.95rem; background: rgba(0,0,0,0.6); padding: 0.4rem 1rem; border-radius: 12px; border: 1px solid var(--border-color); }
+        
+        .lightbox-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(30, 41, 59, 0.85); border: 1px solid var(--border-color); color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; cursor: pointer; transition: 0.3s; z-index: 10; box-shadow: var(--shadow); }
+        .lightbox-nav-btn:hover { background: var(--accent); color: white; border-color: var(--accent); transform: translateY(-50%) scale(1.1); }
+        .lightbox-prev { left: -75px; }
+        .lightbox-next { right: -75px; }
+        
+        @media (max-width: 968px) {
+            .lightbox-prev { left: 10px; }
+            .lightbox-next { right: 10px; }
+        }
+
+        /* Skills Pill Customization based on Image */
+        .skills-grid-box { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; }
+        .skill-item-pill { background: var(--bg-color); border: 1px solid var(--border-color); padding: 0.65rem 1.25rem; border-radius: 12px; font-weight: 600; font-size: 0.92rem; color: var(--text-main); box-shadow: var(--shadow); transition: 0.3s; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .skill-item-pill:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 6px 20px var(--accent-glow); color: var(--accent); }
+
+        /* Footer */
+        footer { text-align: center; padding: 3.5rem 2rem; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.92rem; background: var(--card-bg); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 968px) {
+            .hero { grid-template-columns: 1fr; padding-top: 9rem; text-align: center; }
+            .hero-btns { justify-content: center; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">Wildan Syah Putra<span>, S.P.W.K</span></div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#experience">Pengalaman</a></li>
+                    <li><a href="#projects">Portofolio</a></li>
+                    <li><a href="#skills">Keahlian</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+                <!-- Theme Mode Toggle Button -->
+                <button class="theme-toggle" id="themeToggleBtn" onclick="toggleTheme()" title="Ganti Mode Gelap/Terang">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section dengan Track Switcher Interaktif -->
+    <section class="hero">
+        <div>
+            <!-- Track Switcher -->
+            <div class="track-switcher">
+                <button onclick="switchTrack('hse')" id="btn-hse" class="track-btn active"><i class="fas fa-shield-alt"></i> Track HSE Officer</button>
+                <button onclick="switchTrack('urban')" id="btn-urban" class="track-btn"><i class="fas fa-map-marked-alt"></i> Track Urban Planning / Operasional</button>
+            </div>
+
+            <h1>Integritas Keselamatan & <span>Analisis Spasial Modern</span></h1>
+            <p id="hero-subtitle">HSE Officer dengan pengalaman langsung dalam inspeksi keselamatan kerja dan kesiapsiagaan keadaan darurat di lingkungan high-rise building Grha BNI. Memiliki latar belakang Perencanaan Wilayah dan Kota yang kuat dalam analisis data spasial.</p>
+            
+            <div class="hero-btns">
+                <a href="#projects" class="btn btn-primary"><i class="fas fa-th-large"></i> Lihat Portofolio</a>
+                <a href="Wildan Syah Putra HSE & Safety.pdf" download class="btn btn-outline"><i class="fas fa-file-download"></i> Download CV HSE (PDF)</a>
+                <a href="Wildan Syah Putra MT.pdf" download class="btn btn-outline"><i class="fas fa-file-download"></i> Download CV MT (PDF)</a>
+            </div>
+        </div>
+        <div class="hero-profile-card">
+            <div class="profile-img-container">
+                <img src="img/wildanprofile.jpeg" alt="Wildan Syah Putra" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'">
+            </div>
+            <h3>Wildan Syah Putra, S.P.W.K</h3>
+            <div class="role-sub">HSE Officer | Urban & Regional Planning | GIS Developer</div>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <!-- About Section -->
+        <section id="about">
+            <div class="card" style="padding: 3rem;">
+                <h2 class="section-title" style="margin-bottom: 1.2rem;"><i class="fas fa-user-circle"></i> Ringkasan Profil Profesional</h2>
+                <p style="color: var(--text-muted); font-size: 1.08rem; line-height: 1.9;">
+                    HSE Officer bersertifikasi resmi <strong>Ahli K3 Umum dari Kemnaker RI</strong> dengan rekam jejak terbukti dalam pengawasan keselamatan operasional di gedung bertingkat tinggi (high-rise building Grha BNI). Berpengalaman melakukan inspeksi K3, penanganan unsafe action & unsafe condition, pengujian kesiapsiagaan darurat (APAR, MCFA, jalur evakuasi, dan fire drill). Didukung latar belakang akademik Sarjana Teknik Perencanaan Wilayah dan Kota (Universitas Syiah Kuala, IPK 3.41/4.00) serta keahlian manajerial dalam logistik material skala besar dan pemodelan spasial (ArcGIS & Google Earth Engine).
+                </p>
+            </div>
+        </section>
+
+        <!-- Academic / Education Section -->
+        <section id="education">
+            <div class="card">
+                <h2 class="section-title" style="margin-bottom: 1.2rem;"><i class="fas fa-graduation-cap"></i> Pendidikan & Latar Belakang Akademik</h2>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+                    <div>
+                        <h3 style="font-size: 1.35rem; color: var(--text-main);">Universitas Syiah Kuala — Banda Aceh</h3>
+                        <div class="subtitle" style="margin-bottom: 0.2rem;">Sarjana Teknik Perencanaan Wilayah dan Kota (S.P.W.K)</div>
+                    </div>
+                    <span class="tech-tag" style="font-size: 0.95rem; padding: 0.5rem 1.2rem;">IPK 3.41 / 4.00</span>
+                </div>
+                <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;"><i class="far fa-calendar-alt"></i> Agustus 2020 - Desember 2024</div>
+                <p id="academic-text" style="color: var(--text-muted); font-size: 0.98rem; line-height: 1.8;">
+                    Menyusun pemetaan sebaran area potensi banjir Kabupaten Aceh Tamiang menggunakan Google Earth Engine berdasarkan variabel curah hujan, tutupan lahan, kemiringan lereng, dan elevasi. Menyelesaikan berbagai studio perencanaan wilayah dan kota yang melibatkan pengolahan data, penyusunan peta, analisis kondisi wilayah, serta perumusan rekomendasi perencanaan.
+                </p>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> Pengalaman Kerja & Profesional</h2>
+            <div class="grid-2">
+                <!-- Pekerjaan 1: HSE Officer -->
+                <div class="card">
+                    <div>
+                        <h3>HSE Officer</h3>
+                        <div class="subtitle">PT. Swadharma Griyasatya (SGrS) — Grha BNI, Jakarta Selatan</div>
+                        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;"><i class="far fa-calendar-alt"></i> Oktober 2025 - Sekarang</div>
+                        <ul style="padding-left: 1.2rem; color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                            <li>Melaksanakan inspeksi K3 dan safety patrol pada pekerjaan fit-out di Grha BNI, mengidentifikasi ~10 unsafe action & condition per bulan, serta memantau tindak lanjut perbaikan bersama vendor.</li>
+                            <li>Mengawasi pekerjaan berisiko tinggi (di ketinggian, hot work, kelistrikan), memimpin safety induction & toolbox meeting, serta memeriksa fasilitas tanggap darurat dan APAR.</li>
+                            <li>Mengoperasikan Master Control Fire Alarm (MCFA) dan berpartisipasi aktif dalam pelaksanaan fire drill serta kesiapsiagaan darurat gedung.</li>
+                        </ul>
+                    </div>
+                    <!-- Tombol Akses Galeri K3 -->
+                    <div style="margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--accent); font-weight: 600;">
+                            <i class="fas fa-images"></i> 10 Dokumentasi Foto Lapangan K3
+                        </div>
+                        <button onclick="openHseGallery(0)" class="btn btn-outline" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
+                            <i class="fas fa-expand-arrows-alt"></i> Buka Galeri Foto
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pekerjaan 2: Manager Operasional -->
+                <div class="card">
+                    <div>
+                        <h3>Manager Operasional</h3>
+                        <div class="subtitle">Toko Makmur Besi — Banda Aceh</div>
+                        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;"><i class="far fa-calendar-alt"></i> Januari 2024 - September 2025</div>
+                        <ul style="padding-left: 1.2rem; color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                            <li>Mengelola administrasi operasional serta persediaan lebih dari 500 jenis material konstruksi untuk memastikan ketersediaan dan kelancaran distribusi.</li>
+                            <li>Mendukung 3 proyek pengadaan senilai ~Rp100 juta melalui pemeriksaan spesifikasi dan berkoordinasi langsung dengan 15+ supplier.</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--border-color); font-size: 0.9rem; color: var(--text-muted);">
+                        <i class="fas fa-warehouse" style="color: var(--accent);"></i> Pengelolaan Logistik Konstruksi & Pengendalian Persediaan
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grid Pengalaman Tambahan -->
+            <div class="grid-2" style="margin-top: 2.5rem;">
+                <!-- Staf Magang BAPPEDA -->
+                <div class="card">
+                    <div>
+                        <h3>Staf Magang Perencanaan</h3>
+                        <div class="subtitle">BAPPEDA Kabupaten Pidie — Aceh</div>
+                        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;"><i class="far fa-calendar-alt"></i> Juli 2022 - Desember 2022</div>
+                        <ul style="padding-left: 1.2rem; color: var(--text-muted); font-size: 0.95rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                            <li>Menyusun peta administrasi dan peta SPAL Kabupaten Pidie menggunakan ArcGIS untuk mendukung perencanaan infrastruktur lingkungan.</li>
+                            <li>Menelaah dokumen RPJMD Kabupaten Pidie 2019-2024 serta menyusun laporan evaluasi dan rekomendasi kebijakan daerah.</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--border-color); font-size: 0.9rem; color: var(--text-muted);">
+                        <i class="fas fa-map-marked-alt" style="color: var(--accent);"></i> Analisis Spasial & Evaluasi Kebijakan Pembangunan
+                    </div>
+                </div>
+
+                <!-- Staff Operasional PON & PORA -->
+                <div class="card">
+                    <div>
+                        <h3>Staff Operasional (Cabang Sepatu Roda)</h3>
+                        <div class="subtitle">PON XXI Aceh-Sumut 2024 & PORA XIV Pidie 2022</div>
+                        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem;"><i class="far fa-calendar-alt"></i> September 2024 & Desember 2022</div>
+                        <ul style="padding-left: 1.2rem; color: var(--text-muted); font-size: 0.95rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                            <li>Mendokumentasikan pertandingan serta mengelola pencatatan data peserta dan hasil perlombaan secara akurat.</li>
+                            <li>Berkoordinasi dengan panitia lapangan terkait keamanan lintasan, area start-finish, serta keselamatan atlet dan petugas.</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--border-color); font-size: 0.9rem; color: var(--text-muted);">
+                        <i class="fas fa-running" style="color: var(--accent);"></i> Manajemen Lapangan & Koordinasi Event Nasional
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects & Activities Categorized Section -->
+        <section id="projects">
+            <h2 class="section-title"><i class="fas fa-th-large"></i> Kategori Portofolio & Aktivitas</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2.5rem; margin-top: -1.2rem;">Klik pada tombol kategori di bawah untuk menampilkan dokumentasi dan proyek secara spesifik:</p>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterCategory('k3')"><i class="fas fa-hard-hat"></i> Aktivitas K3</button>
+                <button class="filter-btn" onclick="filterCategory('gee')"><i class="fas fa-cloud"></i> GEE</button>
+                <button class="filter-btn" onclick="filterCategory('arcgis')"><i class="fas fa-map-marked-alt"></i> ArcGIS & Analisis Spasial</button>
+                <button class="filter-btn" onclick="filterCategory('web')"><i class="fas fa-code"></i> Web Developer</button>
+            </div>
+
+            <div class="project-grid">
+                <!-- Safety Induction dengan Auto Slideshow -->
+                <div class="project-card k3 show">
+                    <div class="project-img-container" onclick="openSafetyModal()">
+                        <img src="Foto Gondola.jpeg" class="slide-img active" alt="Gondola" onerror="this.src='https://images.unsplash.com/photo-1541888946425-d0fbb18f15f9?auto=format&fit=crop&w=600&q=80'">
+                        <img src="Foto SGrS.jpeg" class="slide-img" alt="SGrS" onerror="this.src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80'">
+                        <img src="Foto Kone.jpeg" class="slide-img" alt="KONE" onerror="this.src='https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=600&q=80'">
+                    </div>
+                    <div class="project-content">
+                        <h3>Pelaksanaan Safety Induction & Briefing Kerja</h3>
+                        <div class="tech-tags"><span class="tech-tag">HSE Officer</span><span class="tech-tag">3 Dokumentasi Foto</span></div>
+                        <p>Dokumentasi kegiatan rutin K3, prosedur induksi pekerja baru, serta pengawasan keselamatan kerja di area proyek Grha BNI. <em>(Klik untuk melihat detail foto)</em></p>
+                    </div>
+                </div>
+
+                <!-- Toolbox Meeting -->
+                <div class="project-card k3 show">
+                    <div class="project-img-container" onclick="openTbmModal()">
+                        <img src="Foto TBM KONE.jpeg" class="slide-img active" alt="Toolbox Meeting" onerror="this.src='https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80'">
+                    </div>
+                    <div class="project-content">
+                        <h3>Toolbox Meeting — Tim Project</h3>
+                        <div class="tech-tags"><span class="tech-tag">Safety Briefing</span></div>
+                        <p>Memimpin briefing harian bersama tim pelaksana terkait mitigasi bahaya, kepatuhan APD, dan prosedur kerja aman. <em>(Klik untuk detail materi TBM)</em></p>
+                    </div>
+                </div>
+
+                <!-- Safety Patrol -->
+                <div class="project-card k3 show">
+                    <div class="project-img-container" onclick="openSafetyPatrolModal()">
+                        <img src="Foto Temuan Fire Alrm Sitem.jpeg" class="slide-img active" alt="Fire Alarm" onerror="this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80'">
+                        <img src="Foto Temuan di Area Fitout.jpeg" class="slide-img" alt="Area Fitout" onerror="this.src='https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=600&q=80'">
+                        <img src="Foto Evacuation Trapped.jpeg" class="slide-img" alt="Evacuation" onerror="this.src='https://images.unsplash.com/photo-1541888946425-d0fbb18f15f9?auto=format&fit=crop&w=600&q=80'">
+                        <img src="Foto Fit out GGS.jpeg" class="slide-img" alt="Fit out GGS" onerror="this.src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80'">
+                        <img src="Foto fit out Inti Indah.jpeg" class="slide-img" alt="Inti Indah" onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80'">
+                        <img src="Foto fit out SSP.jpeg" class="slide-img" alt="SSP" onerror="this.src='https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80'">
+                    </div>
+                    <div class="project-content">
+                        <h3>Inspeksi & Safety Patrol Grha BNI</h3>
+                        <div class="tech-tags"><span class="tech-tag">Audit Lapangan</span><span class="tech-tag">6 Dokumentasi Foto</span></div>
+                        <p>Melakukan patroli berkala di area kerja fit-out gedung untuk memastikan kepatuhan APD, penanganan kelistrikan, dan mitigasi kondisi tidak aman. <em>(Klik untuk detail foto)</em></p>
+                    </div>
+                </div>
+
+                <!-- Google Earth Engine -->
+                <div class="project-card gee">
+                    <div class="project-img-container" onclick="openGEEDetailModal()">
+                        <img src="Peta Kerawanan Banjir.png" class="slide-img active" alt="Peta Kerawanan Banjir" onerror="this.src='https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=600&q=80'">
+                    </div>
+                    <div class="project-content">
+                        <h3>Pemetaan Kerawanan Banjir & Parameter Spasial (GEE)</h3>
+                        <div class="tech-tags"><span class="tech-tag">Google Earth Engine</span><span class="tech-tag">Skoring Pembobotan</span></div>
+                        <p>Klik kartu ini untuk melihat detail lengkap Studi Kasus Pemetaan Kerawanan Banjir Kabupaten Aceh Tamiang.</p>
+                    </div>
+                </div>
+
+                <!-- ArcGIS -->
+                <div class="project-card arcgis">
+                    <div class="project-img-container" onclick="openZoomModal('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80')">
+                        <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80" class="slide-img active" alt="ArcGIS Layout Map">
+                    </div>
+                    <div class="project-content">
+                        <h3>Penyusunan Peta Tematik & Layout ArcGIS</h3>
+                        <div class="tech-tags"><span class="tech-tag">ArcGIS / ArcMap</span><span class="tech-tag">Cartography</span></div>
+                        <p>Desain layout peta administrasi dan peta SPAL Kabupaten Pidie standar instansi menggunakan ArcGIS lengkap dengan legenda, skala, garis grid, dan analisis spasial.</p>
+                    </div>
+                </div>
+
+                <!-- Web Dev -->
+                <div class="project-card web">
+                    <div class="project-img-container" onclick="openZoomModal('https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80')">
+                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" class="slide-img active" alt="Portfolio Web Development">
+                    </div>
+                    <div class="project-content">
+                        <h3>Website Portofolio Profesional & Interaktif</h3>
+                        <div class="tech-tags"><span class="tech-tag">HTML5 / CSS3</span><span class="tech-tag">JavaScript</span><span class="tech-tag">Responsive UI</span></div>
+                        <p>Pengembangan antarmuka portofolio web modern dengan sistem filter kategori interaktif, galeri interaktif (lightbox), serta layout yang responsif untuk rekruter.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Certification Section (Redesigned matching image reference) -->
+        <section id="skills">
+            <h2 class="section-title"><i class="fas fa-certificate" style="color: var(--accent);"></i> Sertifikasi & Keahlian Utama</h2>
+            
+            <!-- Certification Card -->
+            <div class="card" style="margin-bottom: 2rem; padding: 2.2rem 2.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
+                    <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-main);">Pembinaan Calon Ahli K3 Umum - Kemnaker RI</h3>
+                    <span class="tech-tag" style="font-size: 0.85rem; padding: 0.35rem 1rem;">Juli 2025</span>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;">
+                    PT. Mutiara Mutu Sertifikasi | Sertifikasi resmi ketenagakerjaan dan standar keselamatan kerja nasional.
+                </p>
+            </div>
+
+            <!-- Technical Skills & Software Card -->
+            <div class="card" style="padding: 2.2rem 2.5rem;">
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 1.25rem;">Keahlian Teknis & Perangkat Lunak</h3>
+                <div class="skills-grid-box">
+                    <div class="skill-item-pill"><i class="fas fa-hard-hat" style="color: var(--accent);"></i> Inspeksi & Patroli K3</div>
+                    <div class="skill-item-pill"><i class="fas fa-users" style="color: var(--accent);"></i> Toolbox Meeting & Induction</div>
+                    <div class="skill-item-pill"><i class="fas fa-globe" style="color: var(--accent);"></i> ArcGIS & Google Earth Engine</div>
+                    <div class="skill-item-pill"><i class="fas fa-boxes" style="color: var(--accent);"></i> Pengendalian Persediaan</div>
+                    <div class="skill-item-pill"><i class="fas fa-file-excel" style="color: var(--accent);"></i> Microsoft Office Suite</div>
+                    <div class="skill-item-pill"><i class="fas fa-map-marked-alt" style="color: var(--accent);"></i> Analisis Data Spasial</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" style="margin-bottom: 2rem;">
+            <div class="grid-2" style="align-items: start;">
+                <div class="card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 3rem;">
+                    <div>
+                        <span class="tech-tag" style="margin-bottom: 1.2rem; display: inline-block;">Mari Terhubung</span>
+                        <h2 style="font-size: 2rem; margin-bottom: 1.2rem; font-weight: 700;">Siap Berkontribusi untuk Perusahaan Anda</h2>
+                        <p style="margin-bottom: 1.8rem; line-height: 1.8;">Jika Anda mencari kandidat profesional untuk posisi HSE Officer, Management Trainee, atau pengelolaan operasional berbasis perencanaan wilayah, mari berdiskusi lebih lanjut.</p>
+                        
+                        <div style="display: flex; align-items: center; gap: 0.85rem; background: var(--bg-color); padding: 1rem 1.4rem; border-radius: 14px; border: 1px solid var(--border-color); margin-bottom: 1.8rem; font-size: 0.98rem; font-weight: 600; box-shadow: var(--shadow);">
+                            <i class="fas fa-map-marker-alt" style="color: var(--accent); font-size: 1.2rem;"></i>
+                            <span>Jakarta Selatan, DKI Jakarta</span>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1rem;">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=wildansyahpa24@gmail.com" target="_blank" class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.9rem;"><i class="fas fa-envelope"></i> Email</a>
+                        <a href="https://www.linkedin.com/in/wildansyahputra24/" target="_blank" class="btn btn-outline" style="flex: 1; justify-content: center; font-size: 0.9rem;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a href="https://wa.me/6281360782802" target="_blank" class="btn btn-outline" style="flex: 1; justify-content: center; font-size: 0.9rem; background: rgba(34, 197, 94, 0.1); border-color: #22c55e; color: #22c55e;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
+
+                <div class="card" style="padding: 3rem;">
+                    <h3 style="margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.6rem; font-size: 1.4rem;"><i class="fas fa-paper-plane" style="color: var(--accent);"></i> Kirim Pesan Langsung</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 1.8rem;">Kirimkan undangan wawancara atau penawaran kerja langsung ke inbox email Anda.</p>
+                    
+                    <form id="contactForm" action="https://formspree.io/f/wildansyahpa24" method="POST" onsubmit="handleFormSubmit(event)" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                        <div>
+                            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.4rem;">Nama Perusahaan / Perekrut</label>
+                            <input type="text" name="name" id="sender-name" required style="width: 100%; padding: 0.85rem 1.2rem; border-radius: 12px; background: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-main); font-size: 0.95rem;" placeholder="cth. PT. Pertamina / HRD Manager">
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.4rem;">Email / Kontak</label>
+                            <input type="email" name="email" id="sender-email" required style="width: 100%; padding: 0.85rem 1.2rem; border-radius: 12px; background: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-main); font-size: 0.95rem;" placeholder="hrd@perusahaan.com">
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.4rem;">Pesan / Undangan Interview</label>
+                            <textarea name="message" id="sender-msg" rows="3" required style="width: 100%; padding: 0.85rem 1.2rem; border-radius: 12px; background: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-main); font-size: 0.95rem; resize: vertical;" placeholder="Tuliskan pesan atau jadwal undangan wawancara..."></textarea>
+                        </div>
+                        <button type="submit" id="submitBtn" class="btn btn-primary" style="justify-content: center; width: 100%; margin-top: 0.5rem; padding: 0.9rem;">
+                            Kirim Pesan ke Wildan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Lightbox Gallery Modal with Next/Prev Arrows -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <span class="modal-close" onclick="closeHseGallery()">&times;</span>
+        <div class="lightbox-container">
+            <div class="lightbox-counter" id="lightboxCounter">1 / 10</div>
+            <button class="lightbox-nav-btn lightbox-prev" onclick="changeLightboxSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+            <img id="lightboxImg" src="" alt="Dokumentasi K3">
+            <button class="lightbox-nav-btn lightbox-next" onclick="changeLightboxSlide(1)"><i class="fas fa-chevron-right"></i></button>
+            <div class="lightbox-caption" id="lightboxCaption">Keterangan Foto</div>
+        </div>
+    </div>
+
+    <!-- Modal Safety Induction -->
+    <div id="safetyModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeSafetyModal()">&times;</span>
+            <h2 style="color: var(--accent); margin-bottom: 0.6rem;"><i class="fas fa-hard-hat"></i> Dokumentasi K3 & Pengarahan Keselamatan Kerja</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.8rem; line-height: 1.7;">Standar operasional prosedur pengawasan keselamatan kerja, induksi kontraktor, serta pengoperasian unit berisiko tinggi di lingkungan Grha BNI.</p>
+            
+            <div class="case-study-box">
+                <h4><i class="fas fa-info-circle"></i> Komitmen Pencegahan Kecelakaan Kerja</h4>
+                <p>Memastikan seluruh personil internal maupun mitra kontraktor mematuhi standar K3, menggunakan APD yang layak, serta mengaplikasikan mitigasi bahaya secara ketat demi mewujudkan budaya kerja Zero Accident.</p>
+            </div>
+
+            <div class="case-study-box">
+                <h4><i class="fas fa-shield-alt"></i> 1. Kegiatan Rutin Sebelum Pengoperasian Gondola</h4>
+                <ul>
+                    <li>Memprioritaskan faktor keselamatan (safety) saat bekerja di ketinggian.</li>
+                    <li>Memastikan kondisi kesehatan seluruh personil optimal.</li>
+                    <li>Memeriksa kelayakan dan keberfungsian unit gondola serta Full Body Harness.</li>
+                    <li>Memastikan area kerja aman, memasang rambu (sign), dan mengawasi jalannya operasional.</li>
+                    <li>Mengantisipasi perubahan cuaca/kecepatan angin serta menjaga komunikasi antar tim.</li>
+                </ul>
+                <div style="margin-top: 1.5rem; text-align: center;">
+                    <img src="Foto Gondola.jpeg" class="modal-headline-img" alt="Kegiatan Rutin Gondola" onclick="openZoomModal(this.src)" onerror="this.src='https://images.unsplash.com/photo-1541888946425-d0fbb18f15f9?auto=format&fit=crop&w=800&q=80'">
+                </div>
+            </div>
+
+            <div class="case-study-box">
+                <h4><i class="fas fa-user-shield"></i> 2. Safety Induction Kontraktor PT. SGrS</h4>
+                <ul>
+                    <li>Pengarahan keselamatan kerja wajib bagi pekerja baru sebelum memulai aktivitas proyek.</li>
+                    <li>Penyampaian materi dasar K3 dan pengenalan Alat Pelindung Diri (APD) standar.</li>
+                    <li>Identifikasi potensi bahaya (hazard) spesifik di lingkungan kerja.</li>
+                    <li>Sosialisasi prosedur tanggap darurat dan peninjauan jalur evakuasi gedung.</li>
+                </ul>
+                <div style="margin-top: 1.5rem; text-align: center;">
+                    <img src="Foto SGrS.jpeg" class="modal-headline-img" alt="Safety Induction PT. SGrS" onclick="openZoomModal(this.src)" onerror="this.src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80'">
+                </div>
+            </div>
+
+            <div class="case-study-box">
+                <h4><i class="fas fa-hard-hat"></i> 3. Safety Induction Modernisasi Lift PT. KONE</h4>
+                <ul>
+                    <li>Induksi keselamatan khusus untuk pekerjaan teknis berisiko tinggi (modernisasi lift).</li>
+                    <li>Materi dasar K3, pemahaman kelistrikan/mekanikal, dan pengenalan APD wajib.</li>
+                    <li>Analisis mendalam terhadap hazard area kerja tertutup/shaft lift.</li>
+                    <li>Penerapan SOP kedisiplinan kerja dan peninjauan jalur evakuasi darurat proyek.</li>
+                </ul>
+                <div style="margin-top: 1.5rem; text-align: center;">
+                    <img src="Foto Kone.jpeg" class="modal-headline-img" alt="Safety Induction PT. KONE" onclick="openZoomModal(this.src)" onerror="this.src='https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=800&q=80'">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Toolbox Meeting -->
+    <div id="tbmModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeTbmModal()">&times;</span>
+            <h2 style="color: var(--accent); margin-bottom: 0.6rem;"><i class="fas fa-users"></i> Tool Box Meeting — Tim Project PT. KONE</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.8rem; line-height: 1.7;">Sesi briefing harian bersama tim pelaksana guna memperkuat kesadaran mitigasi risiko sebelum memulai operasional kerja.</p>
+            
+            <div class="case-study-box">
+                <h4><i class="fas fa-clipboard-list"></i> Agenda & Detail Kegiatan</h4>
+                <p><b>Agenda:</b> Tool Box Meeting (TBM)</p>
+                <p><b>Peserta:</b> Tim Project PT. KONE</p>
+            </div>
+
+            <div class="case-study-box">
+                <h4><i class="fas fa-list-check"></i> Materi Toolbox Meeting Utama</h4>
+                <ul>
+                    <li>Identifikasi dan pemetaan potensi bahaya (hazard) di area kerja harian.</li>
+                    <li>Kepatuhan penuh terhadap penggunaan Alat Pelindung Diri (APD) yang dipersyaratkan.</li>
+                    <li>Penggunaan alat kerja dan material yang aman serta sesuai standar operasional.</li>
+                    <li>Pengaturan penempatan material agar tertib dan tidak mengganggu jalur akses/evakuasi.</li>
+                    <li>Pentingnya selalu berkoordinasi dan berkomunikasi efektif dengan sesama anggota tim.</li>
+                    <li>Mengingatkan kembali prosedur manual handling yang benar serta peningkatan kewaspadaan saat mobilisasi di area kerja yang basah.</li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 1.8rem; text-align: center;">
+                <h4 style="margin-bottom: 0.6rem; color: var(--text-main); font-size: 1.05rem;"><i class="fas fa-image"></i> Dokumentasi Toolbox Meeting PT. KONE</h4>
+                <img src="Foto TBM KONE.jpeg" class="modal-headline-img" alt="Dokumentasi TBM PT. KONE" onclick="openZoomModal(this.src)" onerror="this.src='https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80'">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Safety Patrol -->
+    <div id="safetyPatrolModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeSafetyPatrolModal()">&times;</span>
+            <h2 style="color: var(--accent); margin-bottom: 0.6rem;"><i class="fas fa-clipboard-check"></i> Inspeksi & Safety Patrol Grha BNI</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.8rem; line-height: 1.7;">Dokumentasi pelaksanaan patroli K3 rutin di area kerja proyek untuk mengidentifikasi dan menindaklanjuti potensi bahaya.</p>
+            
+            <div class="case-study-box">
+                <h4><i class="fas fa-info-circle"></i> Pengawasan Rutin Lapangan</h4>
+                <p>Memastikan seluruh area kerja memenuhi standar keselamatan, kepatuhan APD, serta pencegahan insiden kerja di lingkungan Grha BNI.</p>
+            </div>
+
+            <div class="modal-params-grid">
+                <!-- Foto 1 -->
+                <div class="modal-param-card">
+                    <img src="Foto Temuan Fire Alrm Sitem.jpeg" alt="Safety Patrol 1" onclick="openZoomModal(this.src)" onerror="this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80'">
+                    <h5>1. Temuan Fire Alarm System</h5>
+                    <p>Trouble smoke detector di Staircase 7 Exit Swamedika (tidak termonitor MCFA). Dikoordinasikan ke vendor PT WTI untuk troubleshooting.</p>
+                </div>
+                <!-- Foto 2 -->
+                <div class="modal-param-card">
+                    <img src="Foto Temuan di Area Fitout.jpeg" alt="Safety Patrol 2" onclick="openZoomModal(this.src)" onerror="this.src='https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=500&q=80'">
+                    <h5>2. Monitoring Fit-out Lantai 22 (PT. SGrS)</h5>
+                    <p>Temuan kabel tanpa proteksi, lampu menyala setelah jam kerja, & baterai lithium charging semalaman. Himbauan pengecekan area telah disampaikan.</p>
+                </div>
+                <!-- Foto 3 -->
+                <div class="modal-param-card">
+                    <img src="Foto Evacuation Trapped.jpeg" alt="Safety Patrol 3" onclick="openZoomModal(this.src)" onerror="this.src='https://images.unsplash.com/photo-1541888946425-d0fbb18f15f9?auto=format&fit=crop&w=500&q=80'">
+                    <h5>3. Evacuation Trapped Lift</h5>
+                    <p>4 orang terjebak di Lift 8 zone 2 lantai 4 berhasil dievakuasi selamat. Pemasangan barikade & pemeriksaan lanjutan oleh tim KONE.</p>
+                </div>
+                <!-- Foto 4 -->
+                <div class="modal-param-card">
+                    <img src="Foto Fit out GGS.jpeg" alt="Safety Patrol 4" onclick="openZoomModal(this.src)" onerror="this.src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=500&q=80'">
+                    <h5>4. Monitoring Fit-out Lantai 27 (PT. GGS)</h5>
+                    <p>Monitoring kondisi area project fit-out. Nihil temuan; seluruh area aman dan tidak terdapat unsafe condition.</p>
+                </div>
+                <!-- Foto 5 -->
+                <div class="modal-param-card">
+                    <img src="Foto fit out Inti Indah.jpeg" alt="Safety Patrol 5" onclick="openZoomModal(this.src)" onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=500&q=80'">
+                    <h5>5. Monitoring Fit-out Lantai 6 (PT. Inti Indah)</h5>
+                    <p>Pemasangan plafon & gypsum. Himbauan penggunaan APD, APAR tersedia, serta akses jalan menuju staircase tidak ditutup.</p>
+                </div>
+                <!-- Foto 6 -->
+                <div class="modal-param-card">
+                    <img src="Foto fit out SSP.jpeg" alt="Safety Patrol 6" onclick="openZoomModal(this.src)" onerror="this.src='https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=500&q=80'">
+                    <h5>6. Monitoring Fit-out Lantai 24 (PT. SSP)</h5>
+                    <p>Pembongkaran gypsum & cleaning area. Memastikan aktivitas aman, kepatuhan APD, serta ketersediaan APAR di area.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Detail GEE (Lengkap dengan Studi Kasus & Parameter) -->
+    <div id="geeModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeGEEDetailModal()">&times;</span>
+            <h2 style="color: var(--accent); margin-bottom: 0.6rem;"><i class="fas fa-water"></i> Pemetaan Kerawanan Banjir Kabupaten Aceh Tamiang</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.8rem; line-height: 1.7;">Studi Kasus Analisis Spasial Komprehensif Berbasis Cloud Computing & Kebijakan Penataan Ruang.</p>
+            
+            <div class="case-study-box">
+                <h4><i class="fas fa-file-alt"></i> Ringkasan Eksekutif (PWK)</h4>
+                <p>Analisis spasial tingkat kerawanan banjir untuk mendukung mitigasi bencana, perlindungan kawasan terbangun, serta perumusan arahan zonasi mitigasi yang adaptif di Kabupaten Aceh Tamiang.</p>
+            </div>
+
+            <div class="case-study-box">
+                <h4><i class="fas fa-code"></i> Pendekatan Teknis & Pemrograman (Coding)</h4>
+                <ul>
+                    <li><b>Tech Stack:</b> Dibangun menggunakan Google Earth Engine (GEE) dengan bahasa JavaScript, serta QGIS untuk final layout cartography.</li>
+                    <li><b>Workflow Skrip:</b> Menggunakan GEE untuk melakukan ekstraksi dan clip dataset global (CHIRPS, SRTM DEM, ESA WorldCover) secara on-the-fly.</li>
+                    <li><b>Analisis Multi-Kriteria:</b> Menerapkan skoring dan pembobotan spasial (weighted overlay) untuk mengklasifikasikan kelas kerawanan.</li>
+                </ul>
+            </div>
+
+            <div class="case-study-box">
+                <h4><i class="fas fa-layer-group"></i> Parameter Utama & Variabel Analisis</h4>
+                <ul>
+                    <li><b>Curah Hujan (CHIRPS):</b> Menilai intensitas dan distribusi curah hujan sebagai pemicu utama limpasan air permukaan.</li>
+                    <li><b>Kemiringan Lereng (SRTM DEM):</b> Menentukan kecepatan laju aliran air permukaan (runoff) berdasarkan tingkat kecuraman topografi.</li>
+                    <li><b>Tutupan Lahan (ESA WorldCover):</b> Menganalisis tingkat resapan air (infiltration) berdasarkan kerapatan vegetasi dan kawasan terbangun.</li>
+                    <li><b>Elevasi:</b> Mengidentifikasi daerah cekungan dan dataran rendah yang berpotensi menjadi akumulasi genangan air.</li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 1.8rem;">
+                <h4 style="margin-bottom: 0.6rem; color: var(--text-main);"><i class="fas fa-map"></i> Headline: Peta Sebaran Risiko Kerawanan Banjir</h4>
+                <img src="Peta Kerawanan Banjir.png" class="modal-headline-img" alt="Peta Kerawanan Banjir Utama" onclick="openZoomModal(this.src)" onerror="this.src='https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80'">
+            </div>
+            
+            <div class="project-description-content" style="margin-top: 1.2rem;">
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+                    Hasil akhir overlay pembobotan parameter menghasilkan klasifikasi zona risiko banjir. <em>*(Klik gambar untuk zoom)*</em>
+                </p>
+
+                <div class="case-study-box">
+                    <div style="margin-bottom: 1.25rem;">
+                        <h4 style="font-size: 1rem; font-weight: 600; color: var(--accent); margin-bottom: 0.4rem;">
+                            ⚙️ Pendekatan Teknis & Cloud Computing (GEE)
+                        </h4>
+                        <ul style="font-size: 0.88rem; color: var(--text-muted); padding-left: 1.2rem; margin: 0;">
+                            <li><strong>Curah Hujan:</strong> <em>CHIRPS Daily</em> (Analisis intensitas tahunan).</li>
+                            <li><strong>Topografi:</strong> <em>USGS SRTMGL1_003</em> (Resolusi 30 meter).</li>
+                            <li><strong>Tutupan Lahan:</strong> <em>ESA WorldCover v100</em> (Tahun 2020).</li>
+                        </ul>
+                    </div>
+
+                    <div style="margin-bottom: 1.25rem;">
+                        <h4 style="font-size: 1rem; font-weight: 600; color: var(--accent); margin-bottom: 0.4rem;">
+                            ⚖️ Pembobotan Parameter Spasial (Multi-Criteria)
+                        </h4>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; font-size: 0.85rem; background: var(--bg-color); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                            <div>• Curah Hujan: <strong>30% (0.3)</strong></div>
+                            <div>• Ketinggian Tanah: <strong>30% (0.3)</strong></div>
+                            <div>• Kemiringan Lereng: <strong>20% (0.2)</strong></div>
+                            <div>• Tutupan Lahan: <strong>20% (0.2)</strong></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 style="font-size: 1rem; font-weight: 600; color: var(--accent); margin-bottom: 0.4rem;">
+                            🏙️ Implikasi Perencanaan Tata Ruang (PWK)
+                        </h4>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">
+                            Hasil overlay peta kerawanan dengan RTRW menunjukkan pusat pelayanan kawasan strategis berada dalam cakupan risiko banjir, yang mengancam realisasi struktur ruang.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parameter Spasial Pendukung Analisis -->
+            <h3 style="margin-top: 2.5rem; margin-bottom: 1.2rem; font-size: 1.15rem; color: var(--text-main); border-left: 3px solid var(--accent); padding-left: 0.75rem;">Parameter Spasial Pendukung Analisis</h3>
+            <div class="modal-params-grid">
+                <div class="modal-param-card">
+                    <img src="Peta Curah Hujan.png" alt="Curah Hujan" onclick="openZoomModal(this.src)" onerror="this.src='https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=400&q=80'">
+                    <h5>1. Curah Hujan</h5>
+                    <p>CHIRPS Daily (Intensitas tahunan)</p>
+                </div>
+                <div class="modal-param-card">
+                    <img src="Peta Kemiringan.png" alt="Kemiringan Lahan" onclick="openZoomModal(this.src)" onerror="this.src='https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=400&q=80'">
+                    <h5>2. Kemiringan Lahan</h5>
+                    <p>USGS SRTM 30m (Topografi)</p>
+                </div>
+                <div class="modal-param-card">
+                    <img src="Peta Ketinggian.png" alt="Ketinggian Tanah" onclick="openZoomModal(this.src)" onerror="this.src='https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=400&q=80'">
+                    <h5>3. Ketinggian Tanah</h5>
+                    <p>SRTM DEM (Klasifikasi Elevasi)</p>
+                </div>
+                <div class="modal-param-card">
+                    <img src="Peta Tutupan Lahan.png" alt="Tutupan Lahan" onclick="openZoomModal(this.src)" onerror="this.src='https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=400&q=80'">
+                    <h5>4. Tutupan Lahan</h5>
+                    <p>ESA WorldCover (Infiltrasi)</p>
+                </div>
+            </div>
+
+            <div class="case-study-box" style="margin-top: 2rem;">
+                <h4><i class="fas fa-lightbulb"></i> Kesimpulan & Rekomendasi Strategis (PWK)</h4>
+                <ul>
+                    <li><b>Efisiensi GEE:</b> Platform Google Earth Engine terbukti efektif dan akurat dalam pemrosesan multi-parameter geospasial berskala besar.</li>
+                    <li><b>Kolaborasi Data:</b> Pentingnya mengombinasikan data lokal instansi dengan pendekatan komputasi awan GEE.</li>
+                    <li><b>Saran Kebijakan:</b> 
+                        <br>1. Pemerintah Daerah disarankan memanfaatkan GEE secara konsisten.
+                        <br>2. Pengembangan infrastruktur pengendali banjir (tanggul & sistem drainase).
+                        <br>3. Integrasi data spasial kerawanan ke dalam revisi RTRW.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Universal Zoom Viewer -->
+    <div id="zoomModal" class="modal" onclick="closeZoomModal(event)" style="background: rgba(0,0,0,0.94);">
+        <span class="modal-close" onclick="closeZoomModal(event)">&times;</span>
+        <img id="zoomImage" src="" alt="Zoom View" style="max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: var(--shadow);">
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" style="display: none; position: fixed; bottom: 30px; right: 30px; z-index: 4000; background: var(--card-bg); color: var(--text-main); padding: 1rem 1.6rem; border-radius: 14px; border: 1px solid var(--accent); box-shadow: 0 15px 35px rgba(0,0,0,0.4); align-items: center; gap: 0.8rem; font-size: 0.95rem;">
+        <i class="fas fa-check-circle" style="color: var(--accent); font-size: 1.3rem;"></i>
+        <span id="toast-msg">Pesan berhasil dikirim!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Wildan Syah Putra, S.P.W.K. Dibangun dengan semangat profesionalisme & teknologi spasial.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Array Data 10 Foto Dokumentasi HSE Lengkap dengan Keterangannya
+        const hsePhotos = [
+            { src: "Foto Gondola.jpeg", caption: "Kegiatan Rutin Sebelum Pengoperasian Gondola" },
+            { src: "Foto SGrS.jpeg", caption: "Safety Induction Kontraktor PT. SGrS" },
+            { src: "Foto Kone.jpeg", caption: "Safety Induction Modernisasi Lift PT. KONE" },
+            { src: "Foto TBM KONE.jpeg", caption: "Toolbox Meeting — Tim Project PT. KONE" },
+            { src: "Foto Temuan Fire Alrm Sitem.jpeg", caption: "Inspeksi Temuan Fire Alarm System" },
+            { src: "Foto Temuan di Area Fitout.jpeg", caption: "Monitoring Fit-out Lantai 22 (PT. SGrS)" },
+            { src: "Foto Evacuation Trapped.jpeg", caption: "Evacuation Trapped Lift 8 Zone 2" },
+            { src: "Foto Fit out GGS.jpeg", caption: "Monitoring Fit-out Lantai 27 (PT. GGS)" },
+            { src: "Foto fit out Inti Indah.jpeg", caption: "Monitoring Fit-out Lantai 6 (PT. Inti Indah)" },
+            { src: "Foto fit out SSP.jpeg", caption: "Monitoring Fit-out Lantai 24 (PT. SSP)" }
+        ];
+
+        let currentHseIndex = 0;
+
+        function openHseGallery(index) {
+            currentHseIndex = index;
+            updateLightboxContent();
+            document.getElementById('lightboxModal').style.display = 'flex';
+        }
+
+        function closeHseGallery() {
+            document.getElementById('lightboxModal').style.display = 'none';
+        }
+
+        function changeLightboxSlide(direction) {
+            currentHseIndex += direction;
+            if (currentHseIndex < 0) {
+                currentHseIndex = hsePhotos.length - 1;
+            } else if (currentHseIndex >= hsePhotos.length) {
+                currentHseIndex = 0;
+            }
+            updateLightboxContent();
+        }
+
+        function updateLightboxContent() {
+            const currentItem = hsePhotos[currentHseIndex];
+            const imgEl = document.getElementById('lightboxImg');
+            imgEl.src = currentItem.src;
+            imgEl.onerror = function() {
+                this.src = 'https://images.unsplash.com/photo-1541888946425-d0fbb18f15f9?auto=format&fit=crop&w=800&q=80';
+            };
+            document.getElementById('lightboxCaption').innerText = currentItem.caption;
+            document.getElementById('lightboxCounter').innerText = `${currentHseIndex + 1} / ${hsePhotos.length}`;
+        }
+
+        // Keyboard Arrow Support untuk Lightbox
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('lightboxModal').style.display === 'flex') {
+                if (e.key === 'ArrowLeft') {
+                    changeLightboxSlide(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeLightboxSlide(1);
+                } else if (e.key === 'Escape') {
+                    closeHseGallery();
+                }
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            window.scrollTo(0, 0);
+            if (window.location.hash) {
+                history.replaceState(null, null, window.location.pathname);
+            }
+
+            const savedTheme = localStorage.getItem('portfolio_theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+                document.getElementById('themeIcon').classList.remove('fa-moon');
+                document.getElementById('themeIcon').classList.add('fa-sun');
+            }
+
+            setInterval(() => {
+                document.querySelectorAll('.project-img-container').forEach(container => {
+                    const slides = container.querySelectorAll('.slide-img');
+                    if (slides.length > 1) {
+                        let activeIndex = Array.from(slides).findIndex(s => s.classList.contains('active'));
+                        if (activeIndex === -1) activeIndex = 0;
+                        slides[activeIndex].classList.remove('active');
+                        let nextIndex = (activeIndex + 1) % slides.length;
+                        slides[nextIndex].classList.add('active');
+                    }
+                });
+            }, 3500);
+        });
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('portfolio_theme', 'light');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('portfolio_theme', 'dark');
+            }
+        }
+
+        function switchTrack(track) {
+            const btnHse = document.getElementById('btn-hse');
+            const btnUrban = document.getElementById('btn-urban');
+            const subtitle = document.getElementById('hero-subtitle');
+            const academicText = document.getElementById('academic-text');
+
+            if (track === 'hse') {
+                btnHse.classList.add('active');
+                btnUrban.classList.remove('active');
+                subtitle.innerHTML = "HSE Officer dengan pengalaman langsung dalam inspeksi keselamatan kerja dan kesiapsiagaan keadaan darurat di lingkungan high-rise building Grha BNI. Memiliki latar belakang Perencanaan Wilayah dan Kota yang kuat dalam analisis data spasial.";
+                academicText.innerHTML = "Menyusun pemetaan sebaran area potensi banjir Kabupaten Aceh Tamiang menggunakan Google Earth Engine berdasarkan variabel curah hujan, tutupan lahan, kemiringan lereng, dan elevasi. Menyelesaikan berbagai studio perencanaan wilayah dan kota yang melibatkan pengolahan data, penyusunan peta, analisis kondisi wilayah, serta perumusan rekomendasi perencanaan.";
+                showToast("Beralih ke Track: HSE Officer & Safety Management");
+            } else {
+                btnUrban.classList.add('active');
+                btnHse.classList.remove('active');
+                subtitle.innerHTML = "Lulusan S1 Perencanaan Wilayah dan Kota (S.P.W.K) dengan pengalaman lintas fungsi dalam pengelolaan operasional, koordinasi pengadaan, pengawasan kepatuhan, dan pelaporan. Berpengalaman mengelola 500+ material dan proyek strategis.";
+                academicText.innerHTML = "Mengintegrasikan prinsip tata ruang adaptif, mitigasi bencana berbasis spasial (Google Earth Engine & ArcGIS), serta tata kelola logistik material dan pengadaan proyek senilai ratusan juta rupiah.";
+                showToast("Beralih ke Track: Urban Planning / Operasional & GIS");
+            }
+        }
+
+        function filterCategory(category) {
+            const cards = document.getElementsByClassName('project-card');
+            for (let i = 0; i < cards.length; i++) {
+                cards[i].classList.remove('show');
+            }
+
+            const targetCards = document.getElementsByClassName(category);
+            for (let i = 0; i < targetCards.length; i++) {
+                targetCards[i].classList.add('show');
+            }
+
+            const buttons = document.getElementsByClassName('filter-btn');
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('active');
+            }
+            event.currentTarget.classList.add('active');
+        }
+
+        function openSafetyModal() {
+            document.getElementById('safetyModal').style.display = 'flex';
+        }
+        function closeSafetyModal() {
+            document.getElementById('safetyModal').style.display = 'none';
+        }
+
+        function openTbmModal() {
+            document.getElementById('tbmModal').style.display = 'flex';
+        }
+        function closeTbmModal() {
+            document.getElementById('tbmModal').style.display = 'none';
+        }
+
+        function openSafetyPatrolModal() {
+            document.getElementById('safetyPatrolModal').style.display = 'flex';
+        }
+        function closeSafetyPatrolModal() {
+            document.getElementById('safetyPatrolModal').style.display = 'none';
+        }
+
+        function openGEEDetailModal() {
+            document.getElementById('geeModal').style.display = 'flex';
+        }
+        function closeGEEDetailModal() {
+            document.getElementById('geeModal').style.display = 'none';
+        }
+
+        function openZoomModal(imageSrc) {
+            document.getElementById('zoomImage').src = imageSrc;
+            document.getElementById('zoomModal').style.display = 'flex';
+        }
+        function closeZoomModal(event) {
+            if (event.target === document.getElementById('zoomModal') || event.target.classList.contains('modal-close')) {
+                document.getElementById('zoomModal').style.display = 'none';
+            }
+        }
+
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim Pesan...';
+            submitBtn.disabled = true;
+
+            const data = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    showToast("Pesan berhasil terkirim langsung ke email Wildan!");
+                    form.reset();
+                } else {
+                    showToast("Gagal mengirim pesan. Silakan gunakan tombol Email di sebelah kiri.");
+                }
+            } catch (error) {
+                showToast("Terjadi kesalahan koneksi. Silakan langsung hubungi via Email.");
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+            toastMsg.innerText = msg;
+            toast.style.display = 'flex';
+            setTimeout(() => { toast.style.display = 'none'; }, 4000);
+        }
+    </script>
+</body>
+</html>
